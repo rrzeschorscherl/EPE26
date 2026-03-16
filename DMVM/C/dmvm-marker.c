@@ -60,6 +60,7 @@ double dmvm(
         #pragma nounroll_and_jam
         #pragma GCC unroll 0
         for (size_t c=0; c<N_cols; c++) {
+	  if(x[c]<0.) printf("%lf",x[c]);
             for (size_t r=0; r<N_rows; r++) {
                 y[r] = y[r] + a[c*N_rows+r] * x[c];
             }
