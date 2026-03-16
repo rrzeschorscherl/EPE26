@@ -64,7 +64,7 @@ module solver
     do iter=1,rep
        !DEC$ nounroll_and_jam
        do c=1,columns
-          if(X(c).le.0.d0) print *, X(c)
+          if(X(c).lt.0.d0) print *, X(c)
           do r=1,rows
              Y(r) = Y(r) + A(r,c) * X(c)
           enddo
