@@ -75,8 +75,8 @@ double dmvm_test(
         double * restrict y,
         const double * restrict a,
         const double * restrict x,
-        int N_rows,
-        int N_cols,
+        size_t N_rows,
+        size_t N_cols,
         int iter
         )
 {
@@ -85,8 +85,8 @@ double dmvm_test(
     S = getTimeStamp();
     for(int j = 0; j < iter; j++) {
         #pragma nounroll_and_jam
-        for (int c=0; c<N_cols; c++) {
-            for (int r=0; r<N_rows; r++) {
+        for (size_t c=0; c<N_cols; c++) {
+            for (size_t r=0; r<N_rows; r++) {
                 y[r] = y[r] + a[c*N_rows+r] * x[c];
             }
         }
@@ -123,10 +123,10 @@ int main (int argc, char** argv)
     posix_memalign((void**) &x, ARRAY_ALIGNMENT, N_cols * bytesPerWord );
     posix_memalign((void**) &y, ARRAY_ALIGNMENT, N_rows * bytesPerWord );
 
-    for (int i=0; i<N_rows; i++) {
+    for (size_t i=0; i<N_rows; i++) {
         y[i] = 3.0 * (double) i/N_rows;
 
-        for (int j=0; j<N_cols; j++) {
+        for (size_t j=0; j<N_cols; j++) {
             x[j] = 2.0 * (double) i/N_rows;
             a[i*N_cols + j] = (double) i * j/(N_rows*N_cols);
         }
