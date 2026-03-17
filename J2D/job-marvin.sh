@@ -1,5 +1,6 @@
 #!/bin/bash -l
 #SBATCH -p sgpu_devel --time=01:00:00 --gpus=1
+#SBATCH -p hager_workshop_sgpu
 
 unset SLURM_EXPORT_ENV
 

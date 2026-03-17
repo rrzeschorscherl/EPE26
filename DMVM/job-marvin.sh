@@ -1,7 +1,6 @@
 #!/bin/bash -l
 #SBATCH -N 1 -p intelsr_devel --exclusive --time=00:10:00 --constraint=perfctr
-
-unset SLURM_EXPORT_ENV
+#SBATCH -p hager_workshop_intelsr
 
 module load intel GCC
 echo Hello World!
@@ -11,7 +10,7 @@ hostname
 icx -Ofast -xHost -qopt-zmm-usage=high -o ./dmvm.exe C/dmvm.c
 #ifx -Ofast -xHost -qopt-zmm-usage=high -o ./dmvm.exe F90/dmvm.f90
 
-#srun --cpu-bind=none --cpu-freq=2000000-2000000:performance ./bench.pl ./dmvm.exe 10000
+srun --cpu-bind=none --cpu-freq=2000000-2000000:performance ./bench.pl ./dmvm.exe 10000
 
 
 
