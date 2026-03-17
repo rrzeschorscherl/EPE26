@@ -100,6 +100,9 @@ int main(int argc, char *argv[]) {
 
     checkCudaErrors(cudaDeviceSynchronize());
 
+    // warmup
+    jacobi<<<numBlocks, blockSize>>>(n_x, n_y, d_u, d_u_new);
+
     // perform measurement
 
     auto start = getTimeStamp();
