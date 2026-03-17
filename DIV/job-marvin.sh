@@ -1,5 +1,6 @@
 #!/bin/bash -l
 #SBATCH -N 1 -p intelsr_devel --exclusive --time=00:05:00 --constraint=perfctr
+#SBATCH --reservation=hager_workshop_intelsr
 
 unset SLURM_EXPORT_ENV
 
